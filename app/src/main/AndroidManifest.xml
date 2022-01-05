@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVoting">
         <activity
+            android:name=".authentication.VoterCompleteProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.AdminHomeActivity"
             android:exported="false" />
         <activity
@@ -18,11 +21,6 @@
         <activity
             android:name=".authentication.VoterLogInActivity"
             android:exported="false" />
-        <activity
-            android:name=".authentication.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.OnlineVoting.NoActionBar" />
         <activity
             android:name=".authentication.AdminLogInActivity"
             android:exported="false" />

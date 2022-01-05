@@ -1,25 +1,49 @@
 package com.example.onlinevoting.authentication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.onlinevoting.MainActivity;
 import com.example.onlinevoting.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Objects;
 
 public class VoterRegisterActivity extends AppCompatActivity {
 
     private EditText fName, email, pwd, voterID, num;
     private String sName, sEmail, sPwd, sVoterID, sNum;
 
+    private FirebaseAuth auth;
+    private DatabaseReference reference;
+
+    private ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voter_register);
+
+        auth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference();
+
+        pd = new ProgressDialog(this);
 
         fName = findViewById(R.id.reg_name);
         email = findViewById(R.id.reg_email);
@@ -45,6 +69,24 @@ public class VoterRegisterActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (auth.getCurrentUser() != null) {
+            openMain();
+        }
+    }
+
+    private void openMain() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
+    private void openCProfile() {
+        startActivity(new Intent(this, VoterCompleteProfileActivity.class));
+        finish();
+    }
+
     private void validateData() {
         sName = fName.getText().toString();
         sEmail = email.getText().toString();
@@ -68,7 +110,60 @@ public class VoterRegisterActivity extends AppCompatActivity {
             num.setError("Required");
             num.requestFocus();
         } else {
-//            createUser();
+            createUser();
         }
+    }
+
+    private void createUser() {
+        pd.setMessage("Loading...");
+        pd.show();
+        auth.createUserWithEmailAndPassword(sEmail, sPwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    uploadData();
+                } else {
+                    pd.dismiss();
+                    Toast.makeText(VoterRegisterActivity.this, "Error: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(VoterRegisterActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void uploadData() {
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id", Objects.requireNonNull(auth.getCurrentUser()).getUid());
+        map.put("name", sName);
+        map.put("email", sEmail);
+        map.put("voterId", sVoterID);
+        map.put("phone", sNum);
+        map.put("password", sPwd);
+
+        reference.child("voters").child(auth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    pd.dismiss();
+                    Toast.makeText(VoterRegisterActivity.this, "Registration Successful!!!", Toast.LENGTH_SHORT).show();
+                    openCProfile();
+                } else {
+                    pd.dismiss();
+                    Toast.makeText(VoterRegisterActivity.this, "Error : " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
+                Toast.makeText(VoterRegisterActivity.this, "Error : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

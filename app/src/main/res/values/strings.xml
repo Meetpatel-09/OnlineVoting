@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Online Voting</string>
 
-<!--    Strings Used in Start Page -->
+    <!--    Strings Used in Start Page -->
     <string name="welcome">Welcome</string>
     <string name="about_application"> The word VOTE means to choose from a list, to elect or to determine.
 The main goal of voting (in a scenario involving the citizens of a given country) is
