@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Online Voting</string>
+
+<!--    Strings Used in Start Page -->
+    <string name="welcome">Welcome</string>
+    <string name="about_application"> The word VOTE means to choose from a list, to elect or to determine.
+The main goal of voting (in a scenario involving the citizens of a given country) is
+to come up with leaders of the people’s choice. Most countries, India not an
+exception have problems when it comes to voting. Some of the problems involved
+include ridging votes during election, insecure or inaccessible polling stations,
+inadequate polling materials and also inexperienced personnel.
+    </string>
+
+    <!-- Strings Used in Authentication -->
+    <string name="online_voting_application">Online Voting Application</string>
+    <string name="voting_quote">It is not enough to just want change … You have to go and make change by voting.</string>
+    <string name="register">Register</string>
+    <string name="login">Log In</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_id">Email ID</string>
+    <string name="password">Password</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="voter_id">Voter ID</string>
+    <string name="show">Show</string>
+    <string name="login_link">Already Registered? Click here to Log In.</string>
+    <string name="registered_link">Not yet Registered? Click here to Register.</string>
+
+</resources>
