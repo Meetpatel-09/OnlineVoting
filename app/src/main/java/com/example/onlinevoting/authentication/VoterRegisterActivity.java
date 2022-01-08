@@ -27,8 +27,8 @@ import java.util.Objects;
 
 public class VoterRegisterActivity extends AppCompatActivity {
 
-    private EditText fName, email, pwd, voterID, num;
-    private String sName, sEmail, sPwd, sVoterID, sNum;
+    private EditText fName, email, pwd, cPwd, num;
+    private String sName, sEmail, sPwd, sCPwd, sNum;
 
     private FirebaseAuth auth;
     private DatabaseReference reference;
@@ -48,7 +48,7 @@ public class VoterRegisterActivity extends AppCompatActivity {
         fName = findViewById(R.id.reg_name);
         email = findViewById(R.id.reg_email);
         pwd = findViewById(R.id.reg_password);
-        voterID = findViewById(R.id.reg_enroll);
+        cPwd = findViewById(R.id.reg_c_password);
         num = findViewById(R.id.reg_phone);
         Button btnReg = findViewById(R.id.btn_reg);
         TextView openLogIn = findViewById(R.id.tv_login);
@@ -56,7 +56,8 @@ public class VoterRegisterActivity extends AppCompatActivity {
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateData();
+//                validateData();
+                openCProfile();
             }
         });
 
@@ -91,7 +92,7 @@ public class VoterRegisterActivity extends AppCompatActivity {
         sName = fName.getText().toString();
         sEmail = email.getText().toString();
         sPwd = pwd.getText().toString();
-        sVoterID = voterID.getText().toString();
+        sCPwd = cPwd.getText().toString();
         sNum = num.getText().toString();
 
         if (sName.isEmpty()) {
@@ -103,14 +104,18 @@ public class VoterRegisterActivity extends AppCompatActivity {
         } else if (sPwd.isEmpty()) {
             pwd.setError("Required");
             pwd.requestFocus();
-        } else if (sVoterID.isEmpty()) {
-            voterID.setError("Required");
-            voterID.requestFocus();
+        } else if (sCPwd.isEmpty()) {
+            pwd.setError("Required");
+            pwd.requestFocus();
         } else if (sNum.isEmpty()) {
             num.setError("Required");
             num.requestFocus();
         } else {
-            createUser();
+            if (!sPwd.equals(sCPwd)) {
+                cPwd.setError("Password not match");
+            } else {
+                createUser();
+            }
         }
     }
 
@@ -142,7 +147,7 @@ public class VoterRegisterActivity extends AppCompatActivity {
         map.put("id", Objects.requireNonNull(auth.getCurrentUser()).getUid());
         map.put("name", sName);
         map.put("email", sEmail);
-        map.put("voterId", sVoterID);
+        map.put("isProfileComplete", "no");
         map.put("phone", sNum);
         map.put("password", sPwd);
 
