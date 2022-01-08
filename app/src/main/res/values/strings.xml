@@ -30,4 +30,15 @@ inadequate polling materials and also inexperienced personnel.
     <string name="profile_picture">Add Profile Picture</string>
     <string name="add_voter_id_picture">Add Voter ID Picture</string>
 
+    <!-- Strings Used in bottom navigation -->
+    <string name="home">Home</string>
+    <string name="notice">Notice</string>
+    <string name="election">Election</string>
+    <string name="profile">Profile</string>
+
+
+    <string name="log_out">Log Out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
