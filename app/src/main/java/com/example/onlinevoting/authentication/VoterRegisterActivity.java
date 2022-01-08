@@ -56,8 +56,7 @@ public class VoterRegisterActivity extends AppCompatActivity {
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                validateData();
-                openCProfile();
+                validateData();
             }
         });
 
