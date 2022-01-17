@@ -38,7 +38,13 @@ inadequate polling materials and also inexperienced personnel.
 
 
     <string name="log_out">Log Out</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Strings Used in profile fragment -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hide">Hide</string>
+    <string name="profile_completed">Profile Completed</string>
+    <string name="account_verified">Account Verified</string>
+    <string name="upcoming_elections">Upcoming Elections</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>

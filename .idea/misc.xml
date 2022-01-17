@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/bottom_rounded.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/button_background.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1453125" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/rounded_coner.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_admin_home.xml" value="0.25677083333333334" />
@@ -14,6 +15,9 @@
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_voter_log_in.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_voter_register.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/fragment_election.xml" value="0.24270833333333333" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/fragment_home.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/fragment_notification.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/fragment_profile.xml" value="0.2789620018535681" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/menu/option_menu.xml" value="0.25677083333333334" />
       </map>

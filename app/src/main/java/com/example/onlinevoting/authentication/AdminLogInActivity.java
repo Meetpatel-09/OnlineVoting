@@ -35,10 +35,10 @@ public class AdminLogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (etPwd.getInputType() == 144) {
                     etPwd.setInputType(129);
-                    show.setText("Hide");
+                    show.setText(R.string.hide);
                 } else {
                     etPwd.setInputType(144);
-                    show.setText("Show");
+                    show.setText(R.string.show);
                 }
                 etPwd.setSelection(etPwd.getText().length());
             }
