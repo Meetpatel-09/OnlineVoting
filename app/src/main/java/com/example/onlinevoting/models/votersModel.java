@@ -8,11 +8,13 @@ public class votersModel {
     private String id;
     private String phone;
     private String voterID;
+    private String profileImage;
+    private String voterIDImage;
 
     public votersModel() {
     }
 
-    public votersModel(String name, String email, String isVerified, String isProfileComplete, String id, String phone, String voterID) {
+    public votersModel(String name, String email, String isVerified, String isProfileComplete, String id, String phone, String voterID, String profileImage, String voterIDImage) {
         this.name = name;
         this.email = email;
         this.isVerified = isVerified;
@@ -20,6 +22,24 @@ public class votersModel {
         this.id = id;
         this.phone = phone;
         this.voterID = voterID;
+        this.profileImage = profileImage;
+        this.voterIDImage = voterIDImage;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public String getVoterIDImage() {
+        return voterIDImage;
+    }
+
+    public void setVoterIDImage(String voterIDImage) {
+        this.voterIDImage = voterIDImage;
     }
 
     public String getName() {

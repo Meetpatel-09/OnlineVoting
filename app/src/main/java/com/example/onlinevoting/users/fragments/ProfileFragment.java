@@ -1,8 +1,6 @@
 package com.example.onlinevoting.users.fragments;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -20,21 +18,16 @@ import android.widget.Toast;
 import com.example.onlinevoting.R;
 import com.example.onlinevoting.StartActivity;
 import com.example.onlinevoting.models.votersModel;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.io.File;
-import java.io.IOException;
+import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
+
+    ImageView profileImage;
 
     private TextView fullName;
     private TextView isApproved;
@@ -50,36 +43,14 @@ public class ProfileFragment extends Fragment {
 
         profileId = FirebaseAuth.getInstance().getUid();
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(profileId).child("profile");
-
         ImageView logOut = view.findViewById(R.id.options);
-        ImageView profileImage = view.findViewById(R.id.image_profile);
+        profileImage = view.findViewById(R.id.image_profile);
         fullName = view.findViewById(R.id.full_name);
         isProfileComplete = view.findViewById(R.id.is_profile_complete);
         isApproved = view.findViewById(R.id.is_approved);
         editProfile = view.findViewById(R.id.edit_profile);
 
         editProfile.setEnabled(false);
-
-        try {
-            final File localFile = File.createTempFile("profile", "jpeg");
-
-            storageReference.getFile(localFile)
-                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                            profileImage.setImageBitmap(bitmap);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), "Error Occurred", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         userInfo();
 
@@ -103,6 +74,7 @@ public class ProfileFragment extends Fragment {
                 votersModel model = snapshot.getValue(votersModel.class);
 
                 fullName.setText(model.getName());
+                Picasso.get().load(model.getProfileImage()).into(profileImage);
                 isProfileComplete.setText(model.getIsProfileComplete());
                 if (model.getIsProfileComplete().equals("Yes")) {
                     isProfileComplete.setTextColor(Color.parseColor("#00FF00"));
