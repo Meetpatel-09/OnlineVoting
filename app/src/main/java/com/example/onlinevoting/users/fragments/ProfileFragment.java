@@ -102,7 +102,6 @@ public class ProfileFragment extends Fragment {
 
                 votersModel model = snapshot.getValue(votersModel.class);
 
-                assert model != null;
                 fullName.setText(model.getName());
                 isProfileComplete.setText(model.getIsProfileComplete());
                 if (model.getIsProfileComplete().equals("Yes")) {

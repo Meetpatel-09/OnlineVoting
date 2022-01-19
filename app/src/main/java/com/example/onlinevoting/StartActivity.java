@@ -11,6 +11,8 @@ import android.widget.Button;
 import com.example.onlinevoting.authentication.AdminLogInActivity;
 import com.example.onlinevoting.authentication.VoterLogInActivity;
 import com.example.onlinevoting.authentication.VoterRegisterActivity;
+import com.example.onlinevoting.users.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -27,6 +29,16 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         btnVoterLogIn.setOnClickListener(this);
         btnAdminLogIn.setOnClickListener(this);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            startActivity(new Intent(StartActivity.this, MainActivity.class));
+            finish();
+        }
     }
 
     @SuppressLint("NonConstantResourceId")

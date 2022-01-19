@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.onlinevoting.users.MainActivity;
 import com.example.onlinevoting.R;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -44,6 +46,9 @@ public class VoterCompleteProfileActivity extends AppCompatActivity {
     private Uri profileImageUri;
     private Uri voterIDImageUri;
 
+    private String profileImageUrl;
+    private String voterIDImageUrl;
+
     private boolean isProfile;
     private boolean isProfileUpdated = false;
     private boolean isVoterIDUpdated = false;
@@ -58,6 +63,9 @@ public class VoterCompleteProfileActivity extends AppCompatActivity {
 
     private FirebaseUser fUser;
     private FirebaseStorage storage;
+
+    private StorageTask uploadTask;
+    private StorageTask uploadTask2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +90,7 @@ public class VoterCompleteProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 isProfile = true;
                 CropImage.activity().setCropShape(CropImageView.CropShape.OVAL).start(VoterCompleteProfileActivity.this);
+
             }
         });
 
@@ -129,10 +138,12 @@ public class VoterCompleteProfileActivity extends AppCompatActivity {
                 isProfileUpdated = true;
                 profileImageUri = result.getUri();
                 profileImage.setImageURI(result.getUri());
+                uploadProfileImage("profile.jpeg", profileImageUri, true, "profileImage");
             } else {
                 isVoterIDUpdated = true;
                 voterIDImageUri = result.getUri();
                 voterIDImage.setImageURI(result.getUri());
+                uploadProfileImage("voterID.jpeg", voterIDImageUri, false, "voterIDImage");
             }
         } else {
             Toast.makeText(this, "Something went wrong.", Toast.LENGTH_SHORT).show();
@@ -157,52 +168,61 @@ public class VoterCompleteProfileActivity extends AppCompatActivity {
     private void updateProfile() {
         pd.setMessage("Uploading...");
         pd.show();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("voters");
+
+        reference.child(fUser.getUid()).child("isProfileComplete").setValue("Yes");
+        reference.child(fUser.getUid()).child("voterID").setValue(sVoterID);
+        pd.dismiss();
+        startActivity(new Intent(VoterCompleteProfileActivity.this, MainActivity.class));
+        finish();
+        Toast.makeText(
+                VoterCompleteProfileActivity.this, "Uploaded Successfully.", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void uploadProfileImage(String imageName, Uri ImageUri, boolean isProfile, String imageNameInDB) {
+
+        final ProgressDialog pd = new ProgressDialog(this);
+        pd.setMessage("Uploading");
+        pd.show();
+
         final StorageReference referenceForProfile = storage.getReference()
-                .child(fUser.getUid()).child("profile");
+                .child(fUser.getUid()).child(imageName);
 
-        final StorageReference referenceForVoterID = storage.getReference()
-                .child(fUser.getUid()).child("voterID");
-
-        referenceForProfile.putFile(profileImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                isProfileUpLoaded = true;
-            }
-        }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+        uploadTask = referenceForProfile.putFile(ImageUri);
+        uploadTask.addOnCompleteListener(VoterCompleteProfileActivity.this, new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                referenceForVoterID.putFile(voterIDImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        isVoterIDUpLoaded = true;
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("voters");
-
-                        reference.child(fUser.getUid()).child("isProfileComplete").setValue("Yes");
-                        reference.child(fUser.getUid()).child("voterID").setValue(sVoterID);
-                        pd.dismiss();
-                        startActivity(new Intent(VoterCompleteProfileActivity.this, MainActivity.class));
-                        finish();
-                        Toast.makeText(
-                                VoterCompleteProfileActivity.this, "Uploaded Successfully.", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        pd.dismiss();
-                        Toast.makeText(VoterCompleteProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                pd.dismiss();
-                Toast.makeText(VoterCompleteProfileActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()) {
+                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            referenceForProfile.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    if (isProfile) {
+                                        profileImageUrl = String.valueOf(uri);
+                                        updateDatabase(imageNameInDB, profileImageUrl);
+                                    } else {
+                                        voterIDImageUrl = String.valueOf(uri);
+                                        updateDatabase(imageNameInDB, voterIDImageUrl);
+                                    }
+                                    pd.dismiss();
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    pd.dismiss();
+                    Toast.makeText(VoterCompleteProfileActivity.this, "Something went wrong!!", Toast.LENGTH_SHORT).show();
+//                    startActivity(new Intent(VoterCompleteProfileActivity.this, VoterCompleteProfileActivity.class));
+                }
             }
         });
+    }
+
+    private void updateDatabase(String imagefor, String imageURL) {
+        FirebaseDatabase.getInstance().getReference().child("voters").child(fUser.getUid()).child(imagefor).setValue(imageURL);
     }
 }
