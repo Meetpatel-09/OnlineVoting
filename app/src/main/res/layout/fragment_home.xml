@@ -3,12 +3,199 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".users.fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardUseCompatPadding="true"
+                tools:ignore="MissingClass">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:iss_auto_cycle="true"
+                    app:iss_period="3000" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:layout_marginTop="25dp"
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/text_color"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginHorizontal="@dimen/text_margin"
+                android:textSize="@dimen/text_size"
+                android:justificationMode="inter_word"
+                android:text="@string/about_application"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/grey1"
+                tools:ignore="UnusedAttribute" />
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="36dp"-->
+<!--                android:background="@color/dark_color">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="36dp"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Departments"-->
+<!--                        android:layout_marginTop="@dimen/text_margin"-->
+<!--                        android:textSize="@dimen/title_size"-->
+<!--                        android:layout_gravity="center_horizontal"-->
+<!--                        android:textColor="#ffffff"-->
+<!--                        android:fontFamily="@string/bold"/>-->
+
+<!--                    <com.google.android.material.card.MaterialCardView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="16dp">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:background="@color/white">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Civil Engineering"-->
+<!--                                android:layout_marginTop="@dimen/text_margin"-->
+<!--                                android:layout_marginHorizontal="@dimen/text_margin"-->
+<!--                                android:textSize="@dimen/text_size"-->
+<!--                                android:layout_gravity="center_horizontal"-->
+<!--                                android:textColor="@color/text_color"-->
+<!--                                android:layout_margin="8dp"-->
+<!--                                android:fontFamily="@string/light"/>-->
+
+<!--                            <View-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="1dp"-->
+<!--                                android:background="@color/grey"/>-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Computer Engineering"-->
+<!--                                android:layout_marginTop="@dimen/text_margin"-->
+<!--                                android:layout_marginHorizontal="@dimen/text_margin"-->
+<!--                                android:textSize="@dimen/text_size"-->
+<!--                                android:layout_gravity="center_horizontal"-->
+<!--                                android:textColor="@color/text_color"-->
+<!--                                android:layout_margin="8dp"-->
+<!--                                android:fontFamily="@string/light"/>-->
+
+<!--                            <View-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="1dp"-->
+<!--                                android:background="@color/grey"/>-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Mechanical Engineering"-->
+<!--                                android:layout_marginTop="@dimen/text_margin"-->
+<!--                                android:layout_marginHorizontal="@dimen/text_margin"-->
+<!--                                android:textSize="@dimen/text_size"-->
+<!--                                android:layout_gravity="center_horizontal"-->
+<!--                                android:textColor="@color/text_color"-->
+<!--                                android:layout_margin="8dp"-->
+<!--                                android:fontFamily="@string/light"/>-->
+
+<!--                        </LinearLayout>-->
+
+<!--                    </com.google.android.material.card.MaterialCardView>-->
+
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/text_margin">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Contact Details"-->
+<!--                    android:layout_marginTop="36dp"-->
+<!--                    android:textSize="@dimen/title_size"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:textColor="@color/text_color"-->
+<!--                    android:fontFamily="@string/bold"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Government Polytechnic, Waghai"-->
+<!--                    android:layout_marginTop="@dimen/text_margin"-->
+<!--                    android:layout_marginHorizontal="@dimen/text_margin"-->
+<!--                    android:textSize="@dimen/text_size"-->
+<!--                    android:textColor="@color/text_color"-->
+<!--                    android:fontFamily="@string/light"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Ahwa Road, Rajendrapur, Ta - Waghai Dist - Dang, Gujarat - 394730"-->
+<!--                    android:layout_marginTop="@dimen/text_margin"-->
+<!--                    android:layout_marginHorizontal="@dimen/text_margin"-->
+<!--                    android:textSize="@dimen/text_size"-->
+<!--                    android:textColor="@color/text_color"-->
+<!--                    android:fontFamily="@string/light"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Email: gp-waghai-dte@gujarat.gov.in"-->
+<!--                    android:layout_marginTop="@dimen/text_margin"-->
+<!--                    android:layout_marginHorizontal="@dimen/text_margin"-->
+<!--                    android:textSize="@dimen/text_size"-->
+<!--                    android:textColor="@color/text_color"-->
+<!--                    android:fontFamily="@string/light"/>-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/map"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="230dp"-->
+<!--                    android:src="@drawable/mapimage"/>-->
+<!--            </LinearLayout>-->
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>
