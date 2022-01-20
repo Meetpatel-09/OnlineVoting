@@ -17,6 +17,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVoting">
         <activity
+            android:name=".admin.election.ViewResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.election.SetElectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.candidates.ApproveCandidateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.voters.VerifyVotersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.notice.DeleteNoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.notice.UploadNoticeActivity"
+            android:exported="false" />
+        <activity
             android:name=".authentication.VoterCompleteProfileActivity"
             android:exported="false" />
         <activity

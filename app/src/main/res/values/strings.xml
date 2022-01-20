@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Online Voting</string>
 
-    <!--    Strings Used in Start Page -->
+    <!-- Strings Used in Multiple Pages -->
+    <string name="log_out">Log Out</string>
+
+
+    <!-- Strings Used in Start Page -->
     <string name="welcome">Welcome</string>
     <string name="about_application"> The word VOTE means to choose from a list, to elect or to determine.
 The main goal of voting (in a scenario involving the citizens of a given country) is
@@ -36,9 +40,6 @@ inadequate polling materials and also inexperienced personnel.
     <string name="election">Election</string>
     <string name="profile">Profile</string>
 
-
-    <string name="log_out">Log Out</string>
-
     <!-- Strings Used in profile fragment -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hide">Hide</string>
@@ -46,5 +47,13 @@ inadequate polling materials and also inexperienced personnel.
     <string name="account_verified">Account Verified</string>
     <string name="upcoming_elections">Upcoming Elections</string>
     <string name="edit_profile">Edit Profile</string>
+
+    <!-- Strings Used in Admin Home Page -->
+    <string name="verify_voters">Verify Voters</string>
+    <string name="approve_candidates">Approve Candidates</string>
+    <string name="upload_notice">Upload Notice</string>
+    <string name="delete_notice">Delete Notice</string>
+    <string name="set_election">Set Election</string>
+    <string name="view_result">View Result</string>
 
 </resources>
