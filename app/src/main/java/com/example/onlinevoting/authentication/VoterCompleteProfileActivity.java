@@ -65,7 +65,6 @@ public class VoterCompleteProfileActivity extends AppCompatActivity {
     private FirebaseStorage storage;
 
     private StorageTask uploadTask;
-    private StorageTask uploadTask2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,7 +186,7 @@ public class VoterCompleteProfileActivity extends AppCompatActivity {
         pd.setMessage("Uploading");
         pd.show();
 
-        final StorageReference referenceForProfile = storage.getReference()
+        final StorageReference referenceForProfile = storage.getReference().child("voters")
                 .child(fUser.getUid()).child(imageName);
 
         uploadTask = referenceForProfile.putFile(ImageUri);

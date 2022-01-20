@@ -47,14 +47,17 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.btn_student_reg:
                 startActivity(new Intent(this, VoterRegisterActivity.class));
+                finish();
                 break;
 
             case R.id.btn_student_login:
                 startActivity(new Intent(this, VoterLogInActivity.class));
+                finish();
                 break;
 
             case R.id.btn_admin_login:
                 startActivity(new Intent(this, AdminLogInActivity.class));
+                finish();
                 break;
 
         }

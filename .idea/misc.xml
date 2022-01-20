@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable-v24/circle_aqua.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable-v24/ic_add_image.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable-v24/ic_delete.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable-v24/ic_notice.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable-v24/ic_voters.xml" value="0.27291666666666664" />
@@ -14,7 +15,7 @@
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/ic_voters.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/rounded_coner.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout-v26/fragment_home.xml" value="0.12916666666666668" />
-        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_admin_home.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_admin_home.xml" value="0.22207207207207208" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_admin_log_in.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_approve_candidate.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_delete_notice.xml" value="0.25677083333333334" />
@@ -23,6 +24,7 @@
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_start.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_upload_notice.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_verify_voters.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_view_results.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_voter_complete_profile.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_voter_log_in.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_voter_register.xml" value="0.25677083333333334" />

@@ -3,6 +3,7 @@ package com.example.onlinevoting.authentication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -18,10 +19,20 @@ public class AdminLogInActivity extends AppCompatActivity {
     private EditText etEmail, etPwd;
     private TextView show;
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_log_in);
+
+        sharedPreferences = this.getSharedPreferences("login", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        if (sharedPreferences.getString("isLogin", "false").equals("yes")) {
+            openDash();
+        }
 
         etEmail = findViewById(R.id.email);
         etPwd = findViewById(R.id.password);
@@ -63,6 +74,8 @@ public class AdminLogInActivity extends AppCompatActivity {
             etPwd.setError("Please enter email");
             etPwd.requestFocus();
         } else if (email.equals("admin@gmail.com") && pwd.equals("123456")) {
+            editor.putString("isLogin", "yes");
+            editor.commit();
             openDash();
         } else {
             Toast.makeText(this, "Please enter correct email and password.", Toast.LENGTH_SHORT).show();
