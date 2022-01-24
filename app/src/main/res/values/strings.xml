@@ -61,5 +61,6 @@ inadequate polling materials and also inexperienced personnel.
     <string name="view_result">View Result</string>
     <string name="approve">Approve</string>
     <string name="email">Email:</string>
+    <string name="voters_details">Voters Details:</string>
 
 </resources>

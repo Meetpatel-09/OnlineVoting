@@ -147,7 +147,7 @@ public class VoterRegisterActivity extends AppCompatActivity {
         map.put("name", sName);
         map.put("email", sEmail);
         map.put("isProfileComplete", "Yes");
-        map.put("isVerified", "Yes");
+        map.put("isVerified", "No");
         map.put("phone", sNum);
         map.put("password", sPwd);
 

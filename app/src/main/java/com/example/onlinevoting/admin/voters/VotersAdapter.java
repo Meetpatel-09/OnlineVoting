@@ -20,6 +20,7 @@ import com.example.onlinevoting.models.VotersModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +55,9 @@ public class VotersAdapter extends RecyclerView.Adapter<VotersAdapter.VotersView
             holder.btnAccept.setText("Approve");
         }
 
+        holder.voterName.setText(model.getName());
+        holder.btnAccept.setVisibility(View.VISIBLE);
+        Picasso.get().load(model.getProfileImage()).into(holder.imgProfile);
         holder.imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +68,8 @@ public class VotersAdapter extends RecyclerView.Adapter<VotersAdapter.VotersView
                 intent.putExtra("profileImage", model.getProfileImage());
                 intent.putExtra("voterIDImage", model.getVoterIDImage());
                 intent.putExtra("voterID", model.getVoterID());
+                intent.putExtra("isApproved", model.getIsVerified());
+                intent.putExtra("id", model.getId());
                 context.startActivity(intent);
             }
         });
@@ -78,6 +84,8 @@ public class VotersAdapter extends RecyclerView.Adapter<VotersAdapter.VotersView
                 intent.putExtra("profileImage", model.getProfileImage());
                 intent.putExtra("voterIDImage", model.getVoterIDImage());
                 intent.putExtra("voterID", model.getVoterID());
+                intent.putExtra("isApproved", model.getIsVerified());
+                intent.putExtra("id", model.getId());
                 context.startActivity(intent);
             }
         });

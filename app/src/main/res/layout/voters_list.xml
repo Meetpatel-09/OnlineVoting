@@ -35,6 +35,7 @@
         android:layout_centerVertical="true"
         android:background="@drawable/button_background"
         android:textAllCaps="false"
+        android:visibility="gone"
         android:textColor="@color/white" />
 <!--    android:layout_toStartOf="@id/deny"-->
 

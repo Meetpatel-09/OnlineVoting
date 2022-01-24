@@ -12,8 +12,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/v_image_profile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:src="@drawable/profile" />
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="--"
             android:textColor="@color/black"
             android:textSize="22sp"
@@ -86,12 +86,22 @@
         <ImageView
             android:id="@+id/v_voter_id_card_image"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:src="@drawable/voter_id"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             tools:ignore="ContentDescription" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginStart="18dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"
+            android:text="@string/voters_details"
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/voter_id"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 />
 
             <TextView
@@ -113,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 />
 
         </LinearLayout>
@@ -131,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mobile_number"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 />
 
             <TextView
@@ -139,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 />
 
         </LinearLayout>
@@ -157,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/email"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 />
 
             <TextView
@@ -165,10 +175,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/p_btn_approve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/button_background"
+            android:padding="5dp"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 

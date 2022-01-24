@@ -93,7 +93,7 @@
                                 android:id="@+id/reg_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                                 android:hint="@string/full_name" />
                         </com.google.android.material.textfield.TextInputLayout>
 
