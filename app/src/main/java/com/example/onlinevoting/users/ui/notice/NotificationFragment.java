@@ -1,12 +1,15 @@
-package com.example.onlinevoting.admin.notice;
+package com.example.onlinevoting.users.ui.notice;
+
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -21,9 +24,9 @@ import com.google.firebase.database.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class DeleteNoticeActivity extends AppCompatActivity {
+public class NotificationFragment extends Fragment {
 
-    private RecyclerView deleteNoticeRecyclerview;
+    private RecyclerView noticeRecyclerview;
     private ProgressBar progressBar;
     private ArrayList<NoticeModel> list;
     private NoticeAdapter adapter;
@@ -31,19 +34,22 @@ public class DeleteNoticeActivity extends AppCompatActivity {
     private DatabaseReference reference;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_notice);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_notification, container, false);
 
-        deleteNoticeRecyclerview = findViewById(R.id.delete_notice_recyclerview);
-        progressBar = findViewById(R.id.progress_bar);
+        noticeRecyclerview = view.findViewById(R.id.recycler_view_notice);
+        progressBar = view.findViewById(R.id.progress_bar_v);
 
         reference = FirebaseDatabase.getInstance().getReference().child("Notice");
 
-        deleteNoticeRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        deleteNoticeRecyclerview.setHasFixedSize(true);
+        noticeRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        noticeRecyclerview.setHasFixedSize(true);
 
         getNotice();
+
+        return view;
     }
 
     private void getNotice() {
@@ -54,19 +60,19 @@ public class DeleteNoticeActivity extends AppCompatActivity {
                 list = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     NoticeModel data = dataSnapshot.getValue(NoticeModel.class);
-                    list.add(data);
+                    list.add(0,data);
                 }
 
-                adapter = new NoticeAdapter(DeleteNoticeActivity.this, list);
+                adapter = new NoticeAdapter(list, getContext());
                 adapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
-                deleteNoticeRecyclerview.setAdapter(adapter);
+                noticeRecyclerview.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(DeleteNoticeActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

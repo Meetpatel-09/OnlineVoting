@@ -53,17 +53,17 @@
             android:text="Admin Login" />
 
         <Button
-            android:id="@+id/btn_student_login"
+            android:id="@+id/btn_voter_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/btn_admin_login"
             android:text="Voter Login" />
 
         <Button
-            android:id="@+id/btn_student_reg"
+            android:id="@+id/btn_voter_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_student_login"
+            android:layout_above="@+id/btn_voter_login"
             android:text="Voter Registration" />
 
     </RelativeLayout>

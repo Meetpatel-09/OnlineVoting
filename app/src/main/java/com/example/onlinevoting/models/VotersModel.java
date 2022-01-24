@@ -1,6 +1,6 @@
 package com.example.onlinevoting.models;
 
-public class votersModel {
+public class VotersModel {
     private String name;
     private String email;
     private String isVerified;
@@ -11,10 +11,10 @@ public class votersModel {
     private String profileImage;
     private String voterIDImage;
 
-    public votersModel() {
+    public VotersModel() {
     }
 
-    public votersModel(String name, String email, String isVerified, String isProfileComplete, String id, String phone, String voterID, String profileImage, String voterIDImage) {
+    public VotersModel(String name, String email, String isVerified, String isProfileComplete, String id, String phone, String voterID, String profileImage, String voterIDImage) {
         this.name = name;
         this.email = email;
         this.isVerified = isVerified;

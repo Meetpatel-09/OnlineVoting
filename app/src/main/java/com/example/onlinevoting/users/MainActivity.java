@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.onlinevoting.R;
-import com.example.onlinevoting.users.fragments.ElectionFragment;
-import com.example.onlinevoting.users.fragments.HomeFragment;
-import com.example.onlinevoting.users.fragments.NotificationFragment;
-import com.example.onlinevoting.users.fragments.ProfileFragment;
+import com.example.onlinevoting.users.ui.election.ElectionFragment;
+import com.example.onlinevoting.users.ui.home.HomeFragment;
+import com.example.onlinevoting.users.ui.notice.NotificationFragment;
+import com.example.onlinevoting.users.ui.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

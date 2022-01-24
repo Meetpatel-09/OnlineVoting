@@ -1,4 +1,4 @@
-package com.example.onlinevoting.users.fragments;
+package com.example.onlinevoting.users.ui.home;
 
 import android.os.Bundle;
 

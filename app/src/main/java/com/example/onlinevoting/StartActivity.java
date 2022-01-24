@@ -21,8 +21,12 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        Button btnVoterReg = findViewById(R.id.btn_student_reg);
-        Button btnVoterLogIn = findViewById(R.id.btn_student_login);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        Button btnVoterReg = findViewById(R.id.btn_voter_reg);
+        Button btnVoterLogIn = findViewById(R.id.btn_voter_login);
         Button btnAdminLogIn = findViewById(R.id.btn_admin_login);
 
         btnVoterReg.setOnClickListener(this);
@@ -45,19 +49,16 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_student_reg:
+            case R.id.btn_voter_reg:
                 startActivity(new Intent(this, VoterRegisterActivity.class));
-                finish();
                 break;
 
-            case R.id.btn_student_login:
+            case R.id.btn_voter_login:
                 startActivity(new Intent(this, VoterLogInActivity.class));
-                finish();
                 break;
 
             case R.id.btn_admin_login:
                 startActivity(new Intent(this, AdminLogInActivity.class));
-                finish();
                 break;
 
         }

@@ -1,8 +1,14 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Online Voting</string>
+
+    <string name="bold" tools:ignore="ReferenceType">@font/lato_bold</string>
+    <string name="light" tools:ignore="ReferenceType">@font/lato_light</string>
+    <string name="regular" tools:ignore="ReferenceType">@font/lato_regular</string>
 
     <!-- Strings Used in Multiple Pages -->
     <string name="log_out">Log Out</string>
+    <string name="voter_id">Voter ID</string>
+    <string name="mobile_number">Mobile Number</string>
 
 
     <!-- Strings Used in Start Page -->
@@ -24,8 +30,6 @@ inadequate polling materials and also inexperienced personnel.
     <string name="email_id">Email ID</string>
     <string name="password">Password</string>
     <string name="c_password">Confirm Password</string>
-    <string name="mobile_number">Mobile Number</string>
-    <string name="voter_id">Voter ID</string>
     <string name="show">Show</string>
     <string name="login_link">Already Registered? Click here to Log In.</string>
     <string name="registered_link">Not yet Registered? Click here to Register.</string>
@@ -55,5 +59,7 @@ inadequate polling materials and also inexperienced personnel.
     <string name="delete_notice">Delete Notice</string>
     <string name="set_election">Set Election</string>
     <string name="view_result">View Result</string>
+    <string name="approve">Approve</string>
+    <string name="email">Email:</string>
 
 </resources>

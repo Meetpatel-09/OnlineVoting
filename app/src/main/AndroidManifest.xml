@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVoting">
         <activity
+            android:name=".admin.voters.ViewVoterProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.election.ViewResultsActivity"
             android:exported="false" />
         <activity

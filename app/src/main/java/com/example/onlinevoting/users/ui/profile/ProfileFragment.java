@@ -1,4 +1,4 @@
-package com.example.onlinevoting.users.fragments;
+package com.example.onlinevoting.users.ui.profile;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.onlinevoting.R;
 import com.example.onlinevoting.StartActivity;
-import com.example.onlinevoting.models.votersModel;
+import com.example.onlinevoting.models.VotersModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -71,7 +71,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                votersModel model = snapshot.getValue(votersModel.class);
+                VotersModel model = snapshot.getValue(VotersModel.class);
 
                 fullName.setText(model.getName());
                 Picasso.get().load(model.getProfileImage()).into(profileImage);
