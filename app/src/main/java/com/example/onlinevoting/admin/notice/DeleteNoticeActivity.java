@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinevoting.R;
@@ -28,6 +29,8 @@ public class DeleteNoticeActivity extends AppCompatActivity {
     private ArrayList<NoticeModel> list;
     private NoticeAdapter adapter;
 
+    private TextView noNotice;
+
     private DatabaseReference reference;
 
     @Override
@@ -37,6 +40,8 @@ public class DeleteNoticeActivity extends AppCompatActivity {
 
         deleteNoticeRecyclerview = findViewById(R.id.delete_notice_recyclerview);
         progressBar = findViewById(R.id.progress_bar);
+
+        noNotice = findViewById(R.id.a_txt_notice);
 
         reference = FirebaseDatabase.getInstance().getReference().child("Notice");
 
@@ -61,6 +66,9 @@ public class DeleteNoticeActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
                 deleteNoticeRecyclerview.setAdapter(adapter);
+                if (list.size() == 0) {
+                    noNotice.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

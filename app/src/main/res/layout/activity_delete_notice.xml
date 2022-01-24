@@ -17,4 +17,17 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 
+    <TextView
+        android:id="@+id/a_txt_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:text="No New Notice"
+        android:visibility="gone"
+        />
 </RelativeLayout>

@@ -100,7 +100,7 @@
             android:layout_marginStart="18dp"
             android:layout_marginBottom="5dp"
             android:textStyle="bold"
-            android:text="@string/voters_details"
+            android:text="Voters Details"
             />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/voter_id"
+                android:text="Voter ID: "
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 />
@@ -139,7 +139,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mobile_number"
+                android:text="Mobile Number: "
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 />
@@ -165,7 +165,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
+                android:text="Email: "
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 />

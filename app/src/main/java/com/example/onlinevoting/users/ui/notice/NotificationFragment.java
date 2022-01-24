@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinevoting.R;
@@ -31,6 +32,8 @@ public class NotificationFragment extends Fragment {
     private ArrayList<NoticeModel> list;
     private NoticeAdapter adapter;
 
+    private TextView noNotice;
+
     private DatabaseReference reference;
 
     @Override
@@ -41,6 +44,7 @@ public class NotificationFragment extends Fragment {
 
         noticeRecyclerview = view.findViewById(R.id.recycler_view_notice);
         progressBar = view.findViewById(R.id.progress_bar_v);
+        noNotice = view.findViewById(R.id.txt_notice);
 
         reference = FirebaseDatabase.getInstance().getReference().child("Notice");
 
@@ -67,6 +71,9 @@ public class NotificationFragment extends Fragment {
                 adapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
                 noticeRecyclerview.setAdapter(adapter);
+                if (list.size() == 0) {
+                    noNotice.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

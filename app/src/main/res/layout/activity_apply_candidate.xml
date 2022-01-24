@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".users.ui.election.ApplyCandidateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/party_logo"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_add_party_logo"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/add_party_logo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/profile_picture"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_adhaar_front_img"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:background="@drawable/circle_purple"
+                    android:src="@drawable/ic_add_image"
+                    android:padding="15dp"
+                    />
+
+                <TextView
+                    android:id="@+id/add_adhaar_front_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Aadhaar Front"
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/add_adhaar_front_image"
+                android:layout_width="220dp"
+                android:layout_height="200dp"
+                android:src="@drawable/aadhaarfront"
+                android:layout_gravity="right"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/add_adhaar_back_img"
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:background="@drawable/circle_purple"
+                    android:src="@drawable/ic_add_image"
+                    android:padding="15dp"
+                    />
+
+                <TextView
+                    android:id="@+id/add_adhaar_back_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Aadhaar Front"
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/add_adhaar_back_image"
+                android:layout_width="220dp"
+                android:layout_height="200dp"
+                android:src="@drawable/aadhaarback"
+                android:layout_gravity="right"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_voter_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Party Name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_party_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -59,8 +59,9 @@ inadequate polling materials and also inexperienced personnel.
     <string name="delete_notice">Delete Notice</string>
     <string name="set_election">Set Election</string>
     <string name="view_result">View Result</string>
+
+    <!-- Strings Used in Admin Approve Voters Page -->
     <string name="approve">Approve</string>
-    <string name="email">Email:</string>
-    <string name="voters_details">Voters Details:</string>
+    <string name="apply_as_candidate">Apply As Candidate</string>
 
 </resources>
