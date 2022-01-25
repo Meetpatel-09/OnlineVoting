@@ -264,9 +264,10 @@ public class ApplyCandidateActivity extends AppCompatActivity {
         map.put("phone", number);
         map.put("partyName", sPartyName);
         map.put("profileImage", profileUrl);
-        map.put("partyLogo", partyLogoUrl);
+        map.put("partyImage", partyLogoUrl);
         map.put("aadhaarFront", adhaarFrontUrl);
         map.put("aadhaarBack", adhaarBackUrl);
+        map.put("isApproved", "No");
 
         reference.child("candidate").child(fUser.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

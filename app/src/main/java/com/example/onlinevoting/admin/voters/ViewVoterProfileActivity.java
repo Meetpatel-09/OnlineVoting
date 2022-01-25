@@ -52,8 +52,8 @@ public class ViewVoterProfileActivity extends AppCompatActivity {
         voterID = findViewById(R.id.txt_voter_id);
         btnApprove = findViewById(R.id.p_btn_approve);
 
-        Picasso.get().load(getIntent().getStringExtra("profileImage")).into(profileImage);
-        Picasso.get().load(getIntent().getStringExtra("voterIDImage")).into(voterImage);
+        Picasso.get().load(getIntent().getStringExtra("profileImage")).placeholder(R.drawable.profile).into(profileImage);
+        Picasso.get().load(getIntent().getStringExtra("voterIDImage")).placeholder(R.drawable.voter_id).into(voterImage);
         fullName.setText(getIntent().getStringExtra("name"));
         email.setText(getIntent().getStringExtra("email"));
         mobile.setText(getIntent().getStringExtra("mobile"));
@@ -118,7 +118,6 @@ public class ViewVoterProfileActivity extends AppCompatActivity {
                 });
 
                 alertDialog.show();
-
             }
         });
     }

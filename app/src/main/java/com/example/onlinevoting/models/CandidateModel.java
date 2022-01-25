@@ -5,25 +5,27 @@ public class CandidateModel {
     private String email;
     private String id;
     private String phone;
-    private String voterID;
+    private String partyName;
     private String profileImage;
     private String partyImage;
-    private String aadhaarFrontImage;
-    private String aadhaarBackImage;
+    private String aadhaarFront;
+    private String aadhaarBack;
+    private String isApproved;
 
     public CandidateModel() {
     }
 
-    public CandidateModel(String name, String email, String id, String phone, String voterID, String profileImage, String partyImage, String aadhaarFrontImage, String aadhaarBackImage) {
+    public CandidateModel(String name, String email, String id, String phone, String partyName, String profileImage, String partyImage, String aadhaarFront, String aadhaarBack, String isApproved) {
         this.name = name;
         this.email = email;
         this.id = id;
         this.phone = phone;
-        this.voterID = voterID;
+        this.partyName = partyName;
         this.profileImage = profileImage;
         this.partyImage = partyImage;
-        this.aadhaarFrontImage = aadhaarFrontImage;
-        this.aadhaarBackImage = aadhaarBackImage;
+        this.aadhaarFront = aadhaarFront;
+        this.aadhaarBack = aadhaarBack;
+        this.isApproved = isApproved;
     }
 
     public String getName() {
@@ -58,12 +60,12 @@ public class CandidateModel {
         this.phone = phone;
     }
 
-    public String getVoterID() {
-        return voterID;
+    public String getPartyName() {
+        return partyName;
     }
 
-    public void setVoterID(String voterID) {
-        this.voterID = voterID;
+    public void setPartyName(String voterID) {
+        this.partyName = voterID;
     }
 
     public String getProfileImage() {
@@ -82,19 +84,27 @@ public class CandidateModel {
         this.partyImage = partyImage;
     }
 
-    public String getAadhaarFrontImage() {
-        return aadhaarFrontImage;
+    public String getAadhaarFront() {
+        return aadhaarFront;
     }
 
-    public void setAadhaarFrontImage(String aadhaarFrontImage) {
-        this.aadhaarFrontImage = aadhaarFrontImage;
+    public void setAadhaarFront(String aadhaarFront) {
+        this.aadhaarFront = aadhaarFront;
     }
 
-    public String getAadhaarBackImage() {
-        return aadhaarBackImage;
+    public String getAadhaarBack() {
+        return aadhaarBack;
     }
 
-    public void setAadhaarBackImage(String aadhaarBackImage) {
-        this.aadhaarBackImage = aadhaarBackImage;
+    public void setAadhaarBackImage(String aadhaarBack) {
+        this.aadhaarBack = aadhaarBack;
+    }
+
+    public String getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(String isApproved) {
+        this.isApproved = isApproved;
     }
 }

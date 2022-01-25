@@ -74,7 +74,7 @@ public class ProfileFragment extends Fragment {
                 VotersModel model = snapshot.getValue(VotersModel.class);
 
                 fullName.setText(model.getName());
-                Picasso.get().load(model.getProfileImage()).into(profileImage);
+                Picasso.get().load(model.getProfileImage()).placeholder(R.drawable.profile).into(profileImage);
                 isProfileComplete.setText(model.getIsProfileComplete());
                 if (model.getIsProfileComplete().equals("Yes")) {
                     isProfileComplete.setTextColor(Color.parseColor("#00FF00"));

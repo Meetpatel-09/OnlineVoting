@@ -64,4 +64,11 @@ inadequate polling materials and also inexperienced personnel.
     <string name="approve">Approve</string>
     <string name="apply_as_candidate">Apply As Candidate</string>
 
+
+    <!-- Strings Used in Admin View Candidate Page -->
+    <string name="delete">Delete</string>
+
+    <!-- Strings Used in Apply Candidate Page -->
+    <string name="add_party_logo">Add Party Logo</string>
+
 </resources>
