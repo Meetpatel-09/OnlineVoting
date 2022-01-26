@@ -70,5 +70,8 @@ inadequate polling materials and also inexperienced personnel.
 
     <!-- Strings Used in Apply Candidate Page -->
     <string name="add_party_logo">Add Party Logo</string>
+    <string name="set_election_date">Set Election Date</string>
+    <string name="election_date">Election Date</string>
+    <string name="click_here_and_set_election">Click here and Set Election</string>
 
 </resources>
