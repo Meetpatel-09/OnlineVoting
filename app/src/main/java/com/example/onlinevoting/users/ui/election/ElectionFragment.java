@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.onlinevoting.R;
 import com.example.onlinevoting.models.CandidateModel;
+import com.example.onlinevoting.models.ElectionModel;
 import com.example.onlinevoting.models.VotersModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,11 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class ElectionFragment extends Fragment {
 
@@ -61,15 +59,15 @@ public class ElectionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_election, container, false);
 
-        electionRecyclerview = view.findViewById(R.id.recycler_view_notice);
-        progressBar = view.findViewById(R.id.progress_bar_v);
+        electionRecyclerview = view.findViewById(R.id.recycler_view_candidates);
+        progressBar = view.findViewById(R.id.progress_bar_e);
         noElection = view.findViewById(R.id.txt_election);
 
         refElection = FirebaseDatabase.getInstance().getReference().child("Election");
         refCandidate = FirebaseDatabase.getInstance().getReference().child("candidate");
 
-//        electionRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-//        electionRecyclerview.setHasFixedSize(true);
+        electionRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        electionRecyclerview.setHasFixedSize(true);
 
         getDate();
 
@@ -84,18 +82,6 @@ public class ElectionFragment extends Fragment {
 
         return view;
     }
-
-//    private void getData() {
-//        Calendar c = Calendar.getInstance();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        String strDate = sdf.format(c.getTime());
-//        progressBar.setVisibility(View.GONE);
-//
-//        String s = strDate.substring(8, 10) + "-" + strDate.substring(5, 7) + "-" + strDate.substring(0, 4);
-//
-//        noElection.setText(strDate);
-//        noElection.setVisibility(View.VISIBLE);
-//    }
 
     private void getDate() {
 
@@ -113,11 +99,6 @@ public class ElectionFragment extends Fragment {
                             result = result.substring(0, 10);
 
                             internetDate = result.substring(8, 10) + "-" + result.substring(5, 7) + "-" + result.substring(0, 4);
-
-                            progressBar.setVisibility(View.GONE);
-                            noElection.setText(internetDate);
-
-                            noElection.setVisibility(View.VISIBLE);
 
                             checkElection();
 
@@ -138,6 +119,58 @@ public class ElectionFragment extends Fragment {
 
     private void checkElection() {
 
+        refElection.child(internetDate).child("electionData").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ElectionModel electionModel = snapshot.getValue(ElectionModel.class);
+
+                progressBar.setVisibility(View.GONE);
+                if (electionModel != null) {
+                    getData();
+                }
+                 else  {
+                    noElection.setText(R.string.no_election_at_this_time);
+                    noElection.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void getData() {
+
+        final ProgressDialog pd = new ProgressDialog(getContext());
+        pd.setMessage("Loading");
+        pd.show();
+
+        refCandidate.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list = new ArrayList<>();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    CandidateModel model = dataSnapshot.getValue(CandidateModel.class);
+
+                    if (model.getIsApproved().equals("Yes")) {
+                        list.add(0, model);
+                    }
+
+                    adapter = new ElectionAdapter(getContext(), list);
+                    adapter.notifyDataSetChanged();
+                    electionRecyclerview.setAdapter(adapter);
+                    pd.dismiss();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void checkProfile() {

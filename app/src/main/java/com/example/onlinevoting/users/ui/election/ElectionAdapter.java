@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlinevoting.R;
 import com.example.onlinevoting.models.CandidateModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -36,6 +38,13 @@ public class ElectionAdapter extends RecyclerView.Adapter<ElectionAdapter.Electi
     @Override
     public void onBindViewHolder(@NonNull ElectionViewHolder holder, int position) {
 
+        CandidateModel model = list.get(position);
+
+        holder.pName.setText(model.getPartyName());
+        holder.cName.setText(model.getName());
+        Picasso.get().load(model.getProfileImage()).placeholder(R.drawable.profile).into(holder.profileImage);
+        Picasso.get().load(model.getPartyImage()).placeholder(R.drawable.profile).into(holder.partyImage);
+        holder.btnVote.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -49,6 +58,7 @@ public class ElectionAdapter extends RecyclerView.Adapter<ElectionAdapter.Electi
         private CircleImageView partyImage;
         private TextView cName;
         private TextView pName;
+        private Button btnVote;
 
         public ElectionViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,6 +67,7 @@ public class ElectionAdapter extends RecyclerView.Adapter<ElectionAdapter.Electi
             partyImage = itemView.findViewById(R.id.e_p_Image);
             cName = itemView.findViewById(R.id.e_name);
             pName = itemView.findViewById(R.id.e_p_name);
+            btnVote = itemView.findViewById(R.id.btn_vote);
         }
     }
 }

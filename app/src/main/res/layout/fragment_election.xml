@@ -46,10 +46,10 @@
         android:layout_below="@id/bar" />
 
     <ProgressBar
-        android:id="@+id/progress_bar_v"
+        android:id="@+id/progress_bar_e"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true" />
 
     <TextView
         android:id="@+id/txt_election"

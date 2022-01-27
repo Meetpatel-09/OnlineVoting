@@ -79,6 +79,6 @@ inadequate polling materials and also inexperienced personnel.
 
     <!-- Strings Used in User Election Fragment -->
     <string name="vote">Vote</string>
-    <string name="no_election_at_this_time">No Election At This Time</string>
+    <string name="no_election_at_this_time">No Election Currently</string>
 
 </resources>

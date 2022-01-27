@@ -71,6 +71,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/c_relative_layout"
                 android:layout_centerHorizontal="true"
+                android:text="@string/vote"
+                android:layout_marginBottom="10dp"
                 android:visibility="gone"/>
 
         </RelativeLayout>
