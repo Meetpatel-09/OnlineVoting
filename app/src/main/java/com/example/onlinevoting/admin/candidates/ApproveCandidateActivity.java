@@ -28,8 +28,6 @@ public class ApproveCandidateActivity extends AppCompatActivity {
     private ArrayList<CandidateModel> list;
     private CandidateAdapter adapter;
 
-    private DatabaseReference reference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
