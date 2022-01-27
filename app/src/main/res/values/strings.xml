@@ -10,7 +10,6 @@
     <string name="voter_id">Voter ID</string>
     <string name="mobile_number">Mobile Number</string>
 
-
     <!-- Strings Used in Start Page -->
     <string name="welcome">Welcome</string>
     <string name="about_application"> The word VOTE means to choose from a list, to elect or to determine.
@@ -60,18 +59,26 @@ inadequate polling materials and also inexperienced personnel.
     <string name="set_election">Set Election</string>
     <string name="view_result">View Result</string>
 
+    <!-- Strings Used in User Notice Fragment -->
+    <string name="no_new_notice">No New Notice</string>
+
     <!-- Strings Used in Admin Approve Voters Page -->
     <string name="approve">Approve</string>
     <string name="apply_as_candidate">Apply As Candidate</string>
 
-
     <!-- Strings Used in Admin View Candidate Page -->
     <string name="delete">Delete</string>
 
-    <!-- Strings Used in Apply Candidate Page -->
+    <!-- Strings Used in User Apply Candidate Page -->
     <string name="add_party_logo">Add Party Logo</string>
     <string name="set_election_date">Set Election Date</string>
     <string name="election_date">Election Date</string>
+
+    <!-- Strings Used in Admin Set Election Page -->
     <string name="click_here_and_set_election">Click here and Set Election</string>
+
+    <!-- Strings Used in User Election Fragment -->
+    <string name="vote">Vote</string>
+    <string name="no_election_at_this_time">No Election At This Time</string>
 
 </resources>

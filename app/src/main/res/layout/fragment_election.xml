@@ -55,7 +55,7 @@
         android:id="@+id/txt_election"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No Election At This Time"
+        android:text="@string/no_election_at_this_time"
         android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
         android:textSize="22sp"

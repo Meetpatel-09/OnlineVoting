@@ -61,7 +61,7 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
         android:layout_below="@+id/bar"
-        android:text="No New Notice"
+        android:text="@string/no_new_notice"
         android:visibility="gone"
         />
 

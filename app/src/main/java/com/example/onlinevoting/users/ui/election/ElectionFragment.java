@@ -15,17 +15,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.onlinevoting.R;
-import com.example.onlinevoting.StartActivity;
-import com.example.onlinevoting.admin.voters.ViewVoterProfileActivity;
-import com.example.onlinevoting.authentication.AdminLogInActivity;
 import com.example.onlinevoting.models.CandidateModel;
-import com.example.onlinevoting.models.NoticeModel;
 import com.example.onlinevoting.models.VotersModel;
-import com.example.onlinevoting.users.MainActivity;
-import com.example.onlinevoting.users.ui.notice.NoticeAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,31 +32,45 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ElectionFragment extends Fragment {
 
     private RecyclerView electionRecyclerview;
     private ProgressBar progressBar;
-//    private ArrayList<ElectionModel> list;
-//    private ElectionAdapter adapter;
+    private ArrayList<CandidateModel> list;
+    private ElectionAdapter adapter;
 
     private TextView noElection;
 
-    private DatabaseReference reference;
+    private DatabaseReference refElection, refCandidate;
 
     private String name, email, number, profileImage, voterIDImage, id, voterId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_election, container, false);
 
         electionRecyclerview = view.findViewById(R.id.recycler_view_notice);
         progressBar = view.findViewById(R.id.progress_bar_v);
+        noElection = view.findViewById(R.id.txt_election);
 
-        progressBar.setVisibility(getId());
+        refElection = FirebaseDatabase.getInstance().getReference().child("Election");
+        refCandidate = FirebaseDatabase.getInstance().getReference().child("candidate");
+
+//        electionRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+//        electionRecyclerview.setHasFixedSize(true);
+
+        getData();
+
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +83,60 @@ public class ElectionFragment extends Fragment {
         return view;
     }
 
-    void checkProfile() {
+    private void getData() {
+
+        Long time = null;
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        String url ="http://worldtimeapi.org/api/timezone/Asia/Kolkata";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+//                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+//                            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+                            JSONObject jsonObject = new JSONObject(response);
+
+
+
+                            String result = jsonObject.getString("datetime");
+                            result = result.substring(0, 10);
+
+                            String result2 = jsonObject.getString("datetime");
+                            result2 = result2.substring(11, 19);
+
+                            String r = result + " " + result2;
+                            Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r);
+
+                            Calendar c = Calendar.getInstance();
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            String strDate = sdf.format(c.getTime());
+
+                            String toprint = date + "  sd" + strDate;
+
+                            progressBar.setVisibility(View.GONE);
+                            noElection.setText(toprint);
+
+                            noElection.setVisibility(View.VISIBLE);
+
+                        } catch (JSONException | ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                noElection.setText(error.getMessage());
+                noElection.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+        queue.add(stringRequest);
+//        return time;
+    }
+
+    private void checkProfile() {
 
         final ProgressDialog pd = new ProgressDialog(getContext());
         pd.setMessage("Loading");
@@ -95,9 +161,6 @@ public class ElectionFragment extends Fragment {
                     checkIfApplied();
                 } else {
                     pd.dismiss();
-                    Intent intent = new Intent(getContext(), MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
                     Toast.makeText(getContext(), "Your Account is not Approved Yet", Toast.LENGTH_SHORT).show();
                 }
             }

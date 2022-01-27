@@ -15,15 +15,12 @@ import android.widget.Toast;
 
 import com.example.onlinevoting.R;
 import com.example.onlinevoting.admin.AdminHomeActivity;
-import com.example.onlinevoting.authentication.AdminLogInActivity;
 import com.example.onlinevoting.models.ElectionModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,7 +34,6 @@ public class SetElectionActivity extends AppCompatActivity{
     String electionDate;
 
     private DatabaseReference reference, dbRef;
-    private StorageReference storageReference;
 
     private ProgressDialog pd;
 
@@ -50,7 +46,6 @@ public class SetElectionActivity extends AppCompatActivity{
         btnSetElection = findViewById(R.id.btn_set_election);
 
         reference = FirebaseDatabase.getInstance().getReference();
-        storageReference = FirebaseStorage.getInstance().getReference();
 
         editText.setHint("Election Date");
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
