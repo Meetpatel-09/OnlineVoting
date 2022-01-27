@@ -54,6 +54,8 @@ public class ElectionFragment extends Fragment {
 
     private String name, email, number, profileImage, voterIDImage, id, voterId;
 
+    private String internetDate;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -97,7 +99,6 @@ public class ElectionFragment extends Fragment {
 
     private void getDate() {
 
-        Long time = null;
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String url ="http://worldtimeapi.org/api/timezone/Asia/Kolkata";
 
@@ -106,43 +107,19 @@ public class ElectionFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         try {
-//                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-//                            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
                             JSONObject jsonObject = new JSONObject(response);
-
-
 
                             String result = jsonObject.getString("datetime");
                             result = result.substring(0, 10);
 
-//                            String result2 = jsonObject.getString("datetime");
-//                            result2 = result2.substring(11, 19);
-//
-//                            String r = result + " " + result2;
-//                            Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r);
-//
-//                            Calendar c = Calendar.getInstance();
-//                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                            String strDate = sdf.format(c.getTime());
-
-//                            assert date != null;
-//                            String d = String.valueOf(date.getDate());
-//                            String m = String.valueOf(date.getMonth());
-//                            String y = String.valueOf(date.getYear());
-
-
-//                            String s = d + "-" + m + "-" + y;
-
-                            String s = result.substring(8, 10) + "-" + result.substring(5, 7) + "-" + result.substring(0, 4);
-
-
-//                            String toprint = String.valueOf(date.equals(strDate));
-                            String toprint = s;
+                            internetDate = result.substring(8, 10) + "-" + result.substring(5, 7) + "-" + result.substring(0, 4);
 
                             progressBar.setVisibility(View.GONE);
-                            noElection.setText(toprint);
+                            noElection.setText(internetDate);
 
                             noElection.setVisibility(View.VISIBLE);
+
+                            checkElection();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -157,7 +134,10 @@ public class ElectionFragment extends Fragment {
             }
         });
         queue.add(stringRequest);
-//        return time;
+    }
+
+    private void checkElection() {
+
     }
 
     private void checkProfile() {
