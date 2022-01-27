@@ -69,7 +69,7 @@ public class ElectionFragment extends Fragment {
 //        electionRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 //        electionRecyclerview.setHasFixedSize(true);
 
-        getData();
+        getDate();
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +83,19 @@ public class ElectionFragment extends Fragment {
         return view;
     }
 
-    private void getData() {
+//    private void getData() {
+//        Calendar c = Calendar.getInstance();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String strDate = sdf.format(c.getTime());
+//        progressBar.setVisibility(View.GONE);
+//
+//        String s = strDate.substring(8, 10) + "-" + strDate.substring(5, 7) + "-" + strDate.substring(0, 4);
+//
+//        noElection.setText(strDate);
+//        noElection.setVisibility(View.VISIBLE);
+//    }
+
+    private void getDate() {
 
         Long time = null;
         RequestQueue queue = Volley.newRequestQueue(getContext());
@@ -103,24 +115,36 @@ public class ElectionFragment extends Fragment {
                             String result = jsonObject.getString("datetime");
                             result = result.substring(0, 10);
 
-                            String result2 = jsonObject.getString("datetime");
-                            result2 = result2.substring(11, 19);
+//                            String result2 = jsonObject.getString("datetime");
+//                            result2 = result2.substring(11, 19);
+//
+//                            String r = result + " " + result2;
+//                            Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r);
+//
+//                            Calendar c = Calendar.getInstance();
+//                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                            String strDate = sdf.format(c.getTime());
 
-                            String r = result + " " + result2;
-                            Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(r);
+//                            assert date != null;
+//                            String d = String.valueOf(date.getDate());
+//                            String m = String.valueOf(date.getMonth());
+//                            String y = String.valueOf(date.getYear());
 
-                            Calendar c = Calendar.getInstance();
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            String strDate = sdf.format(c.getTime());
 
-                            String toprint = date + "  sd" + strDate;
+//                            String s = d + "-" + m + "-" + y;
+
+                            String s = result.substring(8, 10) + "-" + result.substring(5, 7) + "-" + result.substring(0, 4);
+
+
+//                            String toprint = String.valueOf(date.equals(strDate));
+                            String toprint = s;
 
                             progressBar.setVisibility(View.GONE);
                             noElection.setText(toprint);
 
                             noElection.setVisibility(View.VISIBLE);
 
-                        } catch (JSONException | ParseException e) {
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
