@@ -18,6 +18,12 @@
         android:theme="@style/Theme.OnlineVoting"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".admin.election.ResultActivityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.election.DeleteElectionActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.candidates.ViewCandidateActivity"
             android:exported="false" />
         <activity

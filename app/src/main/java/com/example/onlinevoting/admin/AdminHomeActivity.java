@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.onlinevoting.R;
 import com.example.onlinevoting.StartActivity;
 import com.example.onlinevoting.admin.candidates.ApproveCandidateActivity;
+import com.example.onlinevoting.admin.election.DeleteElectionActivity;
 import com.example.onlinevoting.admin.election.SetElectionActivity;
 import com.example.onlinevoting.admin.election.ViewResultsActivity;
 import com.example.onlinevoting.admin.notice.DeleteNoticeActivity;
@@ -21,7 +22,7 @@ import com.google.android.material.card.MaterialCardView;
 
 public class AdminHomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    MaterialCardView uploadNotice, deleteNotice, verifyVoters, approveCandidates, setElection, viewResults;
+    MaterialCardView uploadNotice, deleteNotice, verifyVoters, approveCandidates, setElection, deleteElection, viewResults;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -46,6 +47,7 @@ public class AdminHomeActivity extends AppCompatActivity implements View.OnClick
         verifyVoters = findViewById(R.id.verify_voters);
         approveCandidates = findViewById(R.id.approve_candidate);
         setElection = findViewById(R.id.set_election);
+        deleteElection = findViewById(R.id.delete_election);
         viewResults = findViewById(R.id.view_results);
         logOut = findViewById(R.id.btn_logout);
 
@@ -54,6 +56,7 @@ public class AdminHomeActivity extends AppCompatActivity implements View.OnClick
         verifyVoters.setOnClickListener(this);
         approveCandidates.setOnClickListener(this);
         setElection.setOnClickListener(this);
+        deleteElection.setOnClickListener(this);
         viewResults.setOnClickListener(this);
         logOut.setOnClickListener(this);
     }
@@ -80,6 +83,10 @@ public class AdminHomeActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.set_election:
                 intent = new Intent(AdminHomeActivity.this, SetElectionActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.delete_election:
+                intent = new Intent(AdminHomeActivity.this, DeleteElectionActivity.class);
                 startActivity(intent);
                 break;
             case R.id.view_results:

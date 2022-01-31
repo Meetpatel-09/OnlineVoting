@@ -17,16 +17,19 @@
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/ic_baseline_mode_24.xml" value="0.23603603603603604" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/ic_close.xml" value="0.23603603603603604" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/ic_voters.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/result_item.xml" value="0.22982456140350876" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/drawable/rounded_coner.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout-v26/fragment_home.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_admin_home.xml" value="0.22207207207207208" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_admin_log_in.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_apply_candidate.xml" value="0.22207207207207208" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_approve_candidate.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_delete_election.xml" value="0.2162280701754386" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_delete_notice.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_main.xml" value="0.2528205128205128" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_result_activity.xml" value="0.2162280701754386" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_set_election.xml" value="0.25677083333333334" />
-        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_start.xml" value="0.25677083333333334" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_start.xml" value="0.2162280701754386" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_upload_notice.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_verify_voters.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/activity_view_candidate.xml" value="0.2162280701754386" />
@@ -42,6 +45,7 @@
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/fragment_notification.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/fragment_profile.xml" value="0.2789620018535681" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/news_feed_item_layout.xml" value="0.22207207207207208" />
+        <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/result_item.xml" value="0.2162280701754386" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/v_news_feed_item_layout.xml" value="0.22207207207207208" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/layout/voters_list.xml" value="0.22207207207207208" />
         <entry key="..\:/Users/pmeet/StudioProjects/OnlineVoting/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25677083333333334" />
