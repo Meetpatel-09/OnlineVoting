@@ -146,7 +146,7 @@ public class VoterRegisterActivity extends AppCompatActivity {
         map.put("id", Objects.requireNonNull(auth.getCurrentUser()).getUid());
         map.put("name", sName);
         map.put("email", sEmail);
-        map.put("isProfileComplete", "Yes");
+        map.put("isProfileComplete", "No");
         map.put("isVerified", "No");
         map.put("phone", sNum);
         map.put("password", sPwd);
