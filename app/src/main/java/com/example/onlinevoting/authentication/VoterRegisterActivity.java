@@ -109,6 +109,9 @@ public class VoterRegisterActivity extends AppCompatActivity {
         } else if (sNum.isEmpty()) {
             num.setError("Required");
             num.requestFocus();
+        } else if (sNum.length() != 10) {
+            num.setError("Invalid");
+            num.requestFocus();
         } else {
             if (!sPwd.equals(sCPwd)) {
                 cPwd.setError("Password not match");
